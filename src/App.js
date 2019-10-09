@@ -46,25 +46,24 @@ class App extends Component {
     super(props);
 
     const vstate = JSON.parse(localStorage.getItem('state'));
-    if (vstate !== null) {
-      this.state = this.repair(vstate);
-    } else {
-      this.state = original;
-    }
+    if (vstate !== null) { this.state = this.repair(vstate) } else { this.state = original }
     this.getEvents({
       calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/u5mgb2vlddfj70d7frf3r015h0@group.calendar.google.com/events?key=AIzaSyDtCp1eV5JlY_Smx8wNbXKngun9HZ5J9Ik',
       recurringEvents: true,
       timeMin: Datum.firstDay,
       timeMax: Datum.lastDay
     });
-    window.addEventListener("beforeunload", (ev) => {
-      localStorage.setItem('state', JSON.stringify(this.state));
-      clearInterval();
-    });
+    window.addEventListener("beforeunload", (ev) => { localStorage.setItem('state', JSON.stringify(this.state)) });
   }
 
   resetAll = () => {
     this.setState(original);
+    this.getEvents({
+      calendarUrl: 'https://www.googleapis.com/calendar/v3/calendars/u5mgb2vlddfj70d7frf3r015h0@group.calendar.google.com/events?key=AIzaSyDtCp1eV5JlY_Smx8wNbXKngun9HZ5J9Ik',
+      recurringEvents: true,
+      timeMin: Datum.firstDay,
+      timeMax: Datum.lastDay
+    });
   }
 
   repair(obj) {
@@ -94,13 +93,9 @@ class App extends Component {
 
   getEvents(settings) {
     let finalURL = settings.calendarUrl;
-    if (settings.recurringEvents) {
-      finalURL = finalURL + '&singleEvents=true&orderBy=starttime';
-    } if (settings.timeMin) {
-      finalURL = finalURL + '&timeMin=' + settings.timeMin;
-    } if (settings.timeMax) {
-      finalURL = finalURL + '&timeMax=' + settings.timeMax;
-    }
+    if (settings.recurringEvents) { finalURL = finalURL + '&singleEvents=true&orderBy=starttime'; }
+    if (settings.timeMin) { finalURL = finalURL + '&timeMin=' + settings.timeMin; }
+    if (settings.timeMax) { finalURL = finalURL + '&timeMax=' + settings.timeMax; }
 
     fetch(finalURL).then(res => {
       return res.json();
@@ -192,16 +187,12 @@ class App extends Component {
   }
 }
 
-function comp(a, b) {
-  return new Date(a.start.dateTime || a.start.date).getTime() - new Date(b.start.dateTime || b.start.date).getTime();
-}
-
 function renderList(data, settings) {
   let result = [];
 
   result = data.items.filter(function (item) {
     return item && item.hasOwnProperty('status') && item.status !== 'cancelled';
-  }).sort(comp);
+  }).sort((a, b) => { return new Date(a.start.dateTime || a.start.date).getTime() - new Date(b.start.dateTime || b.start.date).getTime() });
 
   return parseEvents(result);
 }
