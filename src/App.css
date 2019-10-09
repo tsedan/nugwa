@@ -1,0 +1,405 @@
+html, body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.bg-image {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  user-select: none;
+  text-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+}
+
+.name-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.center-exit {
+  position: absolute;
+  right: 0; left: 0;
+  width: 33px;
+  line-height: 60px;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.input-group-sm {
+  margin-top: 5px;
+}
+
+.hover-div {
+  width: 75px;
+  height: 100%;
+  position: absolute;
+  margin: auto;
+  top:0;
+  right:0;
+}
+
+.movement-div {
+  position: fixed;
+
+  max-width: 350px;
+  width: 85vw;
+  height: 100%;
+
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+
+  transition: transform 400ms ease-in-out;
+}
+
+.hover-div:hover .movement-div {
+  transition: transform 400ms ease-in-out;
+  transform: translateX(0%);
+}
+
+.schedule-panel {
+  max-width: 350px;
+  width: 85vw;
+  height: 100%;
+
+  position: absolute;
+  margin: auto;
+  top:0;
+
+  background-color: rgb(255,255,255,0.2);
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+
+  overflow-y: scroll;
+
+  padding: 10px;
+  padding-top: 8px;
+}
+
+.mobile-panel {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  margin: auto;
+  top:0;bottom:0;
+
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(15px);
+
+  overflow: scroll;
+
+  padding: 10px;
+  padding-top: 8px;
+}
+
+.today-info {
+  position: absolute;
+  margin: auto;
+  bottom:0;
+  left:0;
+}
+
+.class-badge {
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.assign-badge {
+  padding: 3px 4px;
+  border-radius: 5px;
+}
+
+.force-left {
+  position: absolute;
+  left: 18px;
+}
+
+.heading-div {
+  position: relative;
+  margin: auto;
+  overflow: visible;
+}
+
+.schedule-header {
+  display: flex;
+  height: 38px;
+}
+
+.planner-header {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 0;
+  font-size: 22px;
+  white-space: nowrap;
+}
+
+.settings-div {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+}
+
+.sched-set {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.non-header {
+  display: inline-block;
+  width: 100%;
+}
+
+.heading-float-left {
+  float: left;
+}
+
+.heading-float-right {
+  float: right;
+}
+
+.no-school {
+  position: absolute;
+  left: 10px;
+  width: calc(100% - 20px);
+  height: 390px;
+  background: url("assets/NoSchool.gif") center center no-repeat;
+}
+
+.glyph-icon {
+  width:32px;
+  height:32px;
+
+  padding: 5px;
+  border-radius: 5px;
+
+  margin: auto;
+}
+
+.glyph-icon:hover {
+  cursor: pointer;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.month-p {
+  margin-top: -10px;
+  padding-bottom: 10px;
+}
+
+.upcoming-card-div {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  padding-right: 7px;
+}
+
+.class-card-div {
+  display: inline-block;
+  overflow: visible;
+  width: 100%;
+  height: 60px;
+  border-radius: 5px;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.4);
+}
+
+.card-holder {
+  position: absolute;
+  width: calc(100% - 20px);
+}
+
+.slide-forwards-enter {
+  transform: translateX(calc(100% + 20px));
+}
+
+.slide-forwards-enter-active {
+  transform: translateX(0%);
+  transition: transform 200ms ease-in-out;
+}
+
+.slide-forwards-exit {
+  transform: translateX(0%);
+}
+
+.slide-forwards-exit-active {
+  transform: translateX(calc(-100% - 20px));
+  transition: transform 200ms ease-in-out;
+}
+
+.slide-backwards-enter {
+  transform: translateX(calc(-100% - 20px));
+}
+
+.slide-backwards-enter-active {
+  transform: translateX(0%);
+  transition: transform 200ms ease-in-out;
+}
+
+.slide-backwards-exit {
+  transform: translateX(0%);
+}
+
+.slide-backwards-exit-active {
+  transform: translateX(calc(100% + 20px));
+  transition: transform 200ms ease-in-out;
+}
+
+.upcoming-div {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.4);
+
+  transition: width 250ms ease-out 50ms;
+}
+
+.finish-div {
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  width: 0;
+  height: 100%;
+  border-radius: 5px;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.4);
+
+  transition: width 250ms ease-out 50ms;
+}
+
+.upcoming-card-div:hover .upcoming-div {
+  width: calc(100% - 40px);
+}
+
+.upcoming-card-div:hover .finish-div {
+  width: 33px;
+}
+
+.card-done {
+  position: absolute;
+  font-size: 20px;
+  text-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.4);
+  color: #F1F1F1;
+  right: 5px;
+}
+
+.text-white {
+  color: #F1F1F1;
+}
+
+.card-due-class {
+  position: absolute;
+  font-size: 15px;
+  text-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.4);
+  color: #F1F1F1;
+  line-height: 90px;
+  padding-left: 7px;
+}
+
+.card-due-date {
+  position: absolute;
+  font-size: 20px;
+  text-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.4);
+  color: #F1F1F1;
+  right: 0;
+  padding-right: 7px;
+  padding-bottom: 7px;
+  margin-top: 30px;
+}
+
+.card-identifier {
+  position: absolute;
+  font-size: 25px;
+  text-shadow: none;
+  right: 0;
+  color: #afafaf;
+  font-variant: small-caps;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+.card-name {
+  position: absolute;
+  font-size: 20px;
+  text-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.4);
+  color: #F1F1F1;
+  padding-left: 7px;
+  white-space: nowrap;
+}
+
+.card-complete {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+  font-size: 25px;
+  text-shadow: none;
+  color: #4ECCA3;
+  font-variant: small-caps;
+  font-weight: bold;
+
+  text-align: center;
+  line-height: 60px;
+}
+
+.exit-button:focus {
+  outline: none;
+}
+
+.p-b-10 {
+  padding-bottom: 10px;
+}
+
+.horizontal-rule {
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 95%;
+  height: 1px;
+  border: none;
+  border-top: 2px solid;
+}
+
+.switch-buttons {
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  top: -15px;
+}
+
+.mobile-desc {
+  padding-top: 10px;
+}
