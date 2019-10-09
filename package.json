@@ -21,7 +21,7 @@
     "predeploy": "npm run pushchanges && npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "http://nugwa.nuns.cf/",
+  "homepage": "http://nugwa.sord.cf/",
   "browserslist": [
     ">0.2%",
     "not dead",
