@@ -21,7 +21,7 @@ const original = {
     "Period F":"Period F",
     "Period G":"Period G"
   },
-  name: "Anonymous Cow",
+  name: "Anonymous Duck",
   events: {},
   upcoming: [],
   message: "Supercalifragilisticexpialidocious",
